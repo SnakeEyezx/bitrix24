@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+{% for message in  get_flashed_messages(with_categories=true) %}
+	<span class="{{ category }}">{{ message }}</span>
+{% endfor %}
+{% if auth_stage == 1 %}
+<form action="/login" method="post">
+	{{ form.csrf_token }}
+	<p>
+		{{ form.phone.label() }}
+		{{ form.phone() }}
+		{% if form.phone.errors %}
+		{% for error in form.phone.errors %}
+		{{ error }}
+		{% endfor %}
+		{% endif %}
+	</p>
+	<p>
+		{{ form.submit() }}
+	</p>
+</form>
+{% else %}
+<form action="/code" method="post">
+	{{ form.csrf_token }}
+	<p>
+		{{ form.code.label() }}
+		{{ form.code() }}
+		{% if form.code.errors %}
+			{% for error in form.code.errors %}
+				{{ error }}
+			{% endfor %}
+		{% endif %}
+		{{ form.phone_hidden() }}
+	</p>
+	<p>
+		{{ form.submit() }}
+	</p>
+</form>
+{% endif %}
+</body>
+</html>

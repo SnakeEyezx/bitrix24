@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+{% for i in contact %}
+<p>Hello {{ i.NAME }} {{ i.LAST_NAME }}</p>
+{% endfor %}
+
+<table>
+    <thead>
+    <tr>
+        <th>id Сделки</th>
+        <th>Название заказа</th>
+        <th>Дата создания</th>
+        <th>Трэк-номер</th>
+        <th>Стоимость</th>
+        <th>Статус заказа</th>
+    </tr>
+    </thead>
+    <tbody>
+    {% for i in deals %}
+    <tr>
+        <td>{{ i.ID }}</td>
+        <td>{{ i.TITLE }}</td>
+        <td>{{ i.DATE_CREATE }}</td>
+        <td>??? Трекномер ???</td>
+        <td>{{ i.OPPORTUNITY }} {{ i.CURRENCY_ID }}</td>
+        <td>{{ i.STAGE_ID }}</td>
+    </tr>
+    {% endfor %}
+    </tbody>
+</table>
+
+
+
+</body>
+</html>
